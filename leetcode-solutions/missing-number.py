@@ -1,8 +1,14 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        
-        n  = len(nums)
+        n = len(nums)
 
-        for i in range(n + 1):
-            if i not in nums:
-                return i 
+        distinct_nums = list( range(n + 1))
+        
+
+
+        for num in distinct_nums:
+            if num not in nums:
+                return num
+        
+
+        re
