@@ -2,12 +2,24 @@ class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
         n = len(names)
 
-        for i in range(1, n):
-            for j in range(i, 0, -1):
-                if heights[j] > heights[j - 1]:
-                    heights[j], heights[j - 1] = heights[j -1], heights[j]
-                    names[j], names[j - 1] = names[j -1], names[j]
-                else:
-                    break
-     
-        return names
+
+        hist = [0] * (max(heights) + 1)
+        name = defaultdict(list)
+        res = []
+
+
+        for i in range(n):
+            h = heights[i]
+            hist[h] = names[i]
+
+
+        for na in hist:
+            if na != 0:
+                res.append(na)
+
+
+        return res[::-1]
+
+
+
+        
