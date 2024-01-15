@@ -3,18 +3,40 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # lets use selection sort just as an example
         n = len(nums)
 
-        for i in range( n- 1):
-            idx = i
-            for j in range(i + 1, n):
-                if nums[j] < nums[idx]:
-                    idx = j
+        left = 0
+        right = 0
 
-            nums[i], nums[idx] = nums[idx], nums[i]
+        while right < n:
 
-        return nums
+            if nums[right] == 0:
+                nums[left], nums[right] = nums[right], nums[left]
 
-                 
+                left += 1
+
+            right += 1
+
+        right = left
+
+        while right < n:
+
+            if nums[right] == 1:
+                nums[left], nums[right] = nums[right], nums[left]
+
+                left += 1
+
+            right += 1
+
+        right = left
+
+        while right < n:
+
+            if nums[right] == 2:
+                nums[left], nums[right] = nums[right], nums[left]
+
+                left += 1
+
+            right += 1
+
         
