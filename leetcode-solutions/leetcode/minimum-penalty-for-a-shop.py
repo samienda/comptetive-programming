@@ -1,41 +1,22 @@
 class Solution:
     def bestClosingTime(self, cust: str) -> int:
+        curr_pen = min_pen = cust.count('Y')
+        idx = 0
         n = len(cust)
-        weight = []
 
 
-        count = defaultdict(list)
-
-        # let go left check if there is n in leftside of the index
-        have = Counter()
-        for i in range(n + 1):
-            # print(have['N'])
-            count[i].append(have['N'])
-
-            if i < n and cust[i] == 'N':
-                have[cust[i]] += 1
+        for i in range(n):
+            if cust[i] == 'Y':
+                curr_pen -= 1
+            else:
+                curr_pen += 1
 
 
-        for i in range(n, -1, -1):
-            if i < n and cust[i] == 'Y':
-                have[cust[i]] += 1
-
-            # print(have['Y'])
-            count[i].append(have['Y'])
+            if curr_pen < min_pen:
+                min_pen = curr_pen
+                idx = i + 1
 
 
-
-        
-        for j in range(n + 1):
-            penality = sum(count[j])
-            
-            weight.append([penality, j])
-        weight.sort()
-
-        return weight[0][1]
-
-
-            
-
+        return idx
 
         
