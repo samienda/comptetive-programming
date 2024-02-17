@@ -21,10 +21,12 @@ class Solution:
                     stack.append(a * b)
                 else:
                     ans = b / a
-                    if ans > 0:
-                        stack.append(math.floor(ans))
-                    else:
-                        stack.append(math.ceil(ans))
+                    # if ans > 0:
+                    #     stack.append(math.floor(ans))
+                    # else:
+                    #     stack.append(math.ceil(ans))
+                    stack.append(int(ans))
+
             else:
                 stack.append(int(token))
             
