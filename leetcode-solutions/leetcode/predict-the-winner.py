@@ -1,11 +1,10 @@
 class Solution:
     def predictTheWinner(self, nums: List[int]) -> bool:
 
-        one = 0
-        two = 0
         n = 0
 
         def find(left, right):
+            # print(left, right)
             if left == right:
                 return [left, 1, 1]
 
@@ -40,9 +39,14 @@ class Solution:
                 return [left, 1, 0]
             return [right, 0, 1]
 
-        left = 0
-        right = len(nums) - 1
-        while left <= right:
+
+
+        def compare(left, right, n, one, two):
+            # print('yes', left, right)
+            # global one, two
+            if  left > right:
+                return one, two
+
             if n % 2 == 0:
                 ans = find(left, right)
                 left += ans[1]
@@ -53,8 +57,10 @@ class Solution:
                 left += ans[1]
                 right -= ans[2]
                 two += nums[ans[0]]
-            # print(one, two)
             n += 1
+            return compare(left, right, n, one, two)
+          
+        one, two = compare(0, len(nums) - 1, 0, 0, 0)
 
         return one >= two
 
