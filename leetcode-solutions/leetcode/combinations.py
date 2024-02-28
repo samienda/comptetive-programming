@@ -4,7 +4,10 @@ class Solution:
         res = []
         def pick(curr, idx):
             nonlocal res
-            if idx > n:
+            if len(curr) > k:
+                return 
+                
+            if idx > n or len(curr) == k:
                 if len(curr) == k:
                     res.append(curr)
                 return 
