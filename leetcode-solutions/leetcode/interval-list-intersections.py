@@ -3,7 +3,7 @@ class Solution:
         
 
         final = firstList + secondList
-        final.sort(key=lambda item:item[1])
+        # final.sort(key=lambda item:item[1])
         final.sort()
 
         last = final[0][1]
