@@ -1,23 +1,15 @@
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         n = len(nums)
-        nums.sort()
-        prefix = nums[:]
 
+        nums.sort(reverse=True)
 
-        for i in range(1, n):
-            prefix[i] += prefix[i - 1]
+        running = sum(nums)
 
-        prefix.append(0)
-
-        # print(nums)
-        # print(prefix)
-        # # return -1
+        for num in nums:
+            running -= num
+            if running > num:
+                return running + num
 
         
-        for large in range(n - 1, 1, -1):
-            
-            if nums[large] < prefix[large - 1]:
-                return prefix[large]
-
         return -1
